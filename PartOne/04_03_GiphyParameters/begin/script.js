@@ -16,7 +16,10 @@ request.onload = function() {
 	console.log(originalUrl);
 	console.log(typeof originalUrl); //checking the data and type
 
-	
+	//4.5. Use response data in HTML
+	var gif = document.createElement('img');
+	gif.setAttribute("src", originalUrl);
+	document.body.appendChild(gif)
 }
 
 request.send();

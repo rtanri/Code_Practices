@@ -8,8 +8,9 @@ request.onload = function() {
 	console.log(jsonData);
 };
 
-request.oneerror = function() {
-	console.log("There seems to be a problem!");
+//basic way in error handling 
+request.onerror = () => {
+	console.log('There seems to be a problem.');
 }
 
 request.send();
