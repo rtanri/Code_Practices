@@ -23,7 +23,7 @@ function Person(name, age) {
 var bob = new Person('Bob', 20); //create Object
 
 
-//3. Insert Props in empty object
+//3. Create 1 new Object - with props excluded.
 var person = new Object();
 
 person.name = 'Bob';
@@ -35,3 +35,31 @@ person.greeting = function () {
 person.likes =  () => {
     console.log("Pizza and Juice")
 }
+// question: how did create props can auto-save into new Object Person? how we can stop the autosave?
+
+
+//4. Create new Object with props included.
+var person = new Object({
+    name: 'Bob',
+    age: 21,
+    greeting : function () {
+        console.log("I am Student")
+    },
+    likes : () => {
+        console.log("Pizza and Juice")
+    }
+})
+
+
+//5.1. Inheritance from #4th
+var newPerson = Object.create(person)
+
+newPerson.name = 'Marie'
+newPerson.age = 25
+
+
+//5.2. Prototype of Main Function-Object
+
+
+
+//6. 
