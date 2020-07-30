@@ -1,8 +1,8 @@
 // Multiple ways to create Object in Javacript
-// Source: https://time2hack.com/different-ways-to-create-objects-in-javascript/
+// Source: https://github.com/bobleesj/javascript-cheatsheet
 
 
-// 1. Normal Creation
+// 1. Normal: Object Notation
 var person = {
     name: 'Bob',
     age: 19,
