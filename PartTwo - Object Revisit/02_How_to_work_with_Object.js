@@ -39,7 +39,7 @@ Object.assign(person, {
 
 
 
-// 3. Spread Operator
+// **3. Spread Operator
 // to spread values of any object into another object
 const person = {
     name: 'Handome Man',
@@ -61,7 +61,7 @@ const personWithWebsite = {
 
 
 
-// 4. Having Value of Variable as the key
+// **4. Having Value of Variable as the key
 // You can access the 'value' in the object in the same way you access 'array value' in indexes
 
 const person ={
@@ -132,7 +132,7 @@ Selina = {
 
 
 
-// 6.1. Constructor Function i.e. with NEW keyword
+// **6.1. Constructor Function i.e. with NEW keyword
 
 const Person = function (name, email) {
     this.name = name;
