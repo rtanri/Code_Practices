@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <head>
+<script src="/assets/jquery.js"></script>
 <link href='https://fonts.googleapis.com/css?family=Londrina+Shadow' rel='stylesheet' type='text/css'>
 <style>
 body {
@@ -31,6 +32,7 @@ h2 {
 }
 p {
   color: rgba(255,255,255,1);
+  height: 30px;
   background: black;
   background: linear-gradient(bottom, rgba(0,0,0,1), rgba(0,0,0,.4));
   background: -webkit-linear-gradient(bottom, rgba(0,0,0,1), rgba(0,0,0,.4));
@@ -41,6 +43,9 @@ p {
   position: absolute;
   bottom: 0;
   margin: 0;
+  transition: height .5s;
+  -webkit-transition: height .5s;
+  -moz-transition: height .5s;
 }
 
 .first{
@@ -54,6 +59,18 @@ p {
 }
 .price {
   float: right;
+}
+
+.show-description p{
+  height: 150px;
+}
+
+.show-description small{
+  opacity: 1;
+}
+
+small{
+  opacity: 0;  
 }
 
 @media (max-width: 500px){
@@ -91,6 +108,7 @@ p {
 <body>
 <h1>esha's restaurant</h1>
 <h2>a New York City eatery</h2>
+
 <div class="first">
   <p>welsh onion soko <span class="price">$14</span><br />
   <small>Mustard sierra leone bologi kale chard beet greens black-eyed pea sorrel amaranth garlic tigernut spring onion summer purslane asparagus lentil. </small></p>
@@ -106,8 +124,15 @@ p {
   <small>Lollipop tart cotton candy jelly-o carrot cake apple pie cupcake. Jelly-o bear claw ice cream candy canes.</small></p>
 </div>
 
-</body>
+<script>
 
+  $('div').on("click", function(){
+    $(this).toggleClass('show-description');
+  });
+  
+</script>
+
+</body>
 
 
 <!-- 
@@ -121,5 +146,9 @@ When we edit <SPAN> in the <p> with text-align:right, it didn't move. Because te
 
 When you put gradient or other CSS, sometime it didn't show, need to appear in most browser with "Vendor Prefixes"
 e.g.   background: -webkit-linear-gradient(bottom,rgba(0,0,0,1), rgba(0,0,0,.4));
+
+
+for the hiding JS animation using Jquery eventlistener adding CLASS
+And for Transition CSS use transition: height .5s; remember on -webkit-, -moz-
 
  -->
