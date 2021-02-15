@@ -1,69 +1,86 @@
 <!DOCTYPE html>
 
 <head>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Londrina+Shadow&display=swap" rel="stylesheet">
 
 <style>
-  body {
-    font-family: helvetica, sans-serif;
-    margin: 0 auto;
-    max-width: 600px;
-  }
-  
-  div{
-    height: 200px;
-    background-size: cover;
-    position: relative;
-    margin: 40px 0 0 0;
-    border-radius: 12px;
-  }
-  
-  p {
-    color: rgba(255, 255, 255, 1);
-    background: rgba(0, 0, 0, 1);
-    padding: 10px;
-    text-align: justify;
-    line-height: 28px;
-    position: absolute;
-    bottom: 0;
-    margin: 0;
-  }
-  
-  .first{
-    background: url("/assets/firstcourse.jpg");
-  }
-  
-  .second{
-    background: url("/assets/secondcourse.jpg");  
-  }
-    
-  .dessert{
-    background: url("/assets/dessertcourse.jpg");  
-  }
-  
-  
-  
+body {
+  font-family: helvetica, sans-serif;
+  margin: 0 auto;
+  max-width: 600px;
+  background: #232323;
+}
+
+h1 {
+  font-family: 'Londrina Shadow', cursive;
+  text-align: center;
+  font-size: 75px;
+  margin: 60px 0 0 0;
+  color: #aaaaaa;
+}
+
+h2{
+  text-align: center;  
+  margin: 0 0 70px 0;
+  color: #bbbbbb;
+}
+
+div {
+  height: 200px;
+  background-size: cover;
+  position: relative;
+  margin: 40px 0 0 0;
+  border-radius: 12px;
+}
+
+p {
+  color: rgba(255,255,255,1);
+  background:rgba(0,0,0,1); 
+  background: -webkit-linear-gradient(bottom,rgba(0,0,0,1), rgba(0,0,0,.4));
+  background: -moz-linear-gradient(bottom,rgba(0,0,0,1), rgba(0,0,0,.4));
+  padding: 10px;
+  line-height: 28px;
+  text-align: justify;
+  position: absolute;
+  bottom: 0;
+  margin: 0;
+}
+
+.first{
+  background-image: url("assets/firstcourse.jpg");
+}
+.second{
+  background-image: url("assets/secondcourse.jpg");
+}
+.dessert{
+  background-image: url("assets/dessertcourse.jpg");
+}
+
+.price{
+  float: right;  
+}
+
+
 </style>
 
 </head>
 
 <body>
-  <h1>esha's restaurant</h1>
-  <div class="first">
-  <p>welsh onion soko $14 <br />
-  <small>Mustard sierra leone bologi kale chard beet greens black-eyed pea sorrel amaranth garlic tigernut spring onion summer purslane asparagus lentil.</small> 
-  </p>
-  </div>
-  
-  <div class="second">
-  <p>pastrami boudin tongue <br />
-  <small>$22 Tri-tip capicola kielbasa salami brisket chicken rump strip steak drumstick. Meatloaf chuck boudin ribeye pork jowl. Andouille bacon jowl meatloaf pork loin prosciutto bresaola.</small></p>
-  </div>
-  
-  <div class="dessert">
-  <p>fruitcake marzipan pudding dragee <br />
-  <small>$8 Lollipop tart cotton candy jelly-o carrot cake apple pie cupcake. Jelly-o bear claw ice cream candy canes.</small>
-  </p>
-  </div>
+<h1>esha's restaurant</h1>
+<h2>A New York City Eatery</h2>
+<div class="first">
+<p>welsh onion soko <span class="price">$14</span><br />
+<small>Mustard sierra leone bologi kale chard beet greens black-eyed pea sorrel amaranth garlic tigernut spring onion summer purslane asparagus lentil. </small></p>
+</div>
+<div class="second">
+<p>pastrami boudin tongue <span class="price">$22</span><br />
+<small>Tri-tip capicola kielbasa salami brisket chicken rump strip steak drumstick. Meatloaf chuck boudin ribeye pork jowl. Andouille bacon jowl meatloaf pork loin prosciutto bresaola.</small></p>
+</div>
+<div class="dessert">
+<p>fruitcake marzipan pudding dragee <span class="price">$8</span><br />
+<small>Lollipop tart cotton candy jelly-o carrot cake apple pie cupcake. Jelly-o bear claw ice cream candy canes.</small></p>
+</div>
 </body>
 
 
@@ -71,5 +88,12 @@
 Position:
 1. Absolute: will manage the pixel of selected sides. e.g. bottom: 0; then it will move to the bottom, stick to below
 2. Relative: put in the parents, then the child with "absolute-position" will follow the parents
+
+
+When we edit <SPAN> in the <p> with text-align:right, it didn't move. Because text-align align BLOCKS, 
+    but spans are INLINE. So in order to move INLINE item, we used Float.
+
+When you put gradient or other CSS, sometime it didn't show, need to appear in most browser with "Vendor Prefixes"
+e.g.   background: -webkit-linear-gradient(bottom,rgba(0,0,0,1), rgba(0,0,0,.4));
 
  -->
