@@ -17,3 +17,6 @@ src folder: where our code located
     // take out all of the configuration files that is hidden from us for Babylon web hack in case
     // we wanted to managed it ourselves.
 }
+
+YARN and NPM are a package manager. What differentiate is the command you put in terminal.
+yarn create by facebook when NPM has few issues. 
