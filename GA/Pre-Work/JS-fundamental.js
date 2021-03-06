@@ -11,6 +11,8 @@ cheese.pop();
 cheese.length;
 
 
+/*================= Solving with IF LOOP ======================================*/ 
+
 // Lapis, Papyrus, Scalpellus project with array and IF (Control Flow)
 // Create object with properties that can be changed
 const player = {
