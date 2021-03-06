@@ -15,6 +15,4 @@ puts 'MAMAKU MAMAmu'.downcase
 #Combine the method call - name.method1.method2.method3 (flow from 1,2,3)
 name = "Revin TAnri".downcase.reverse.upcase # ==> IRNAT NIVER
 
-
-
-
+#3. 
