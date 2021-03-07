@@ -89,3 +89,32 @@ document.querySelector('h1').removeAttribute('#title');
 for (i=0; i<toDoList.length; i++){
   todos.removeChild(todos.childNodes[i]);
 }
+
+/* =========== Practices ended =================*/
+
+
+
+// 3. Event Listener
+    // 3.1. Commonly Used listener starts with "on"
+    onload // --- when the page load
+    onclick // --- when a user clicks something
+        elementToGrab().onclick = function() {/* code */}    
+
+    onmouseover // --- when a user hovers mouse over something
+    onfocus // --- user puts the cursor on a form field
+
+    document.querySelector("#login").onclick = responseToLoginAttempt
+
+
+    // 3.2. Method: addEventListener()
+    // tell element to wait for something to happen in browser, then execute a specific function
+    function sayHello(){
+        console.log("Hello");
+    }
+    document.querySelector("button").addEventListener("click", sayHello); 
+    //takes 2 parameters - name of browser event + callback function to be executed
+    
+    document.querySelector('#disappearing-button').onclick = function(e) {
+        console.log(e.target);
+        e.target.remove();
+    }
