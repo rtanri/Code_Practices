@@ -54,3 +54,24 @@ if (computer.currentChoice === player.currentChoice){
             console.log("Computer win");   
         }
     }
+
+
+// Variable shadowing in JS, it will hide the value of parents
+//Global (name)
+    //Local (name)
+        //Local
+    //Local
+
+let name = "Andrew"
+
+if (true){
+    let name = 'Mike'
+
+    if (true) {
+        name = 'Jen'
+        console.log(name) // == it will print 'Jen'
+    }
+}
+if (true){
+    console.log(name) // --- it will print Andrew
+}
