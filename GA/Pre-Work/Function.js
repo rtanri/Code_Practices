@@ -66,16 +66,18 @@ const player = {
   
   const computerChooses = () => {
     const randomIndex = Math.floor(Math.random() * choices.length);
-    return computer.currentChoice === choices[randomIndex];
-    //?? the answer given has no 'return'-- computer.currentChoice = choices[randomIndex]  
+    return randomIndex
+    // It is better to so stop in randomIndex
   }
-  
-  
-  // Here's where the player makes their choice. Try changing the index in the line below to test out the conditional!
+
+  // so that we have different random value
+  let pcRandomChoice = computerChooses()
+
+  computer.currentChoice = choices[pcRandomChoice]
   player.currentChoice = choices[0];
   
-  
-  // ?? why we do not need to put parameter 'player.currentChoice'. it is global, but should we include the parameter manually
+  // function to compare 2 choices
+  // Put in the parameter will be better to avoid error in case player.currentChoice got changed 
   const compareChoices = (player.currentChoice) => {
     computerChooses();
     
