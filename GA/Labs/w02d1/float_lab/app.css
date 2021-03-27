@@ -1,0 +1,18 @@
+#content{
+    background-color: #eaeaea;
+    /* font-size: 30px; */
+}
+
+article{
+    width: 50%;
+    float: left;
+}
+
+.clearfix {
+    clear: both;
+}
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}

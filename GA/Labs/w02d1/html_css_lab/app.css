@@ -1,0 +1,87 @@
+/* by elements = div, class, paragraph, image */
+/* HTML sequence - webpage  */
+
+body{
+    background-color: rgba(214,213,225);
+    font-family: sans-serif;
+}
+
+
+h1, h2, h3, h4, h5{
+    text-align: center;
+    color: rgba(45,80,108);
+    margin-top: 0px;
+    margin-bottom: 20px;
+}
+
+/* Page Header CSS */
+
+
+#page-header{ /* div */
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0;
+    background-color: rgba(248,248,248);
+}
+
+#inner-page-header-wrapper{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 30px;
+    padding-bottom: 16px;
+}
+
+#inner-page-header-wrapper h1{
+    text-align: center;
+}
+
+
+#page-header img{
+    width: 100%; /* will only fit on the 100% of screen */
+}
+
+
+/* Page Body CSS */
+
+main{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgba(238,238,238);
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+main nav{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.articleBox{
+    margin: 20px auto 0 auto;
+    background-color: white;
+    padding: 20px 10px;
+    width: 90%;
+}
+
+
+/* Page Footer CSS */
+
+#page-footer{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgba(249,249,249);
+}
+
+#inner-page-footer-wrapper{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 16px;
+    padding-top: 20px;
+}
