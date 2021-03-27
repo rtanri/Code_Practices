@@ -185,34 +185,43 @@ const theAvengers = [
 
 // 6. Other Objects - Garmonbozia
 
-// const garmonbozia = {
-//     meltedFace: true,
-//     wobblyArms: true,
-//     mysteryMeats: [
-//       'Schlimmbinooks',
-//       'blangs',
-//       { place: 'Akrotiri', treasures: ['Minoan temples', 'volcanoes'] },
-//       { type: 'Yuck-tops', deliverables: [
-//         'Nevermind',
-//         { zone: 'safety-zone' },
-//         { zone: false, true: true },
-//         () => {
-//           return () => {
-//             return () => {
-//               return () => {
-//                 return () => {
-//                   return { website: 'Gossipcop.com', what: {
-//                     offering: 'creamed corn', location: 'dark'
-//                   }
-//                   }
-//                 }
-//               }
-//             }
-//           }
-//         }
-//        ]
-//       }
-//     ]
-// }
+const garmonbozia = {
+    meltedFace: true,
+    wobblyArms: true,
+    mysteryMeats: [
+      'Schlimmbinooks',
+      'blangs',
+      { place: 'Akrotiri', treasures: ['Minoan temples', 'volcanoes'] },
 
-// console.log(garmonbozia.mysteryMeats[4]type);
+      { type: 'Yuck-tops', deliverables: [
+        'Nevermind',
+        { zone: 'safety-zone' },
+        { zone: false, true: true },
+        () => {
+          return () => {
+            return () => {
+              return () => {
+                return () => {
+                  return { website: 'Gossipcop.com', what: {
+                    offering: 'creamed corn', location: 'dark'
+                  }
+                  }
+                }
+              }
+            }
+          }
+        }
+       ]
+      }
+    ]
+}
+
+// this will give function anonymous
+console.log(garmonbozia.mysteryMeats[3].deliverables[3]);
+
+// execute until most inner function, 
+console.log(garmonbozia.mysteryMeats[3].deliverables[3]()()()()());
+
+// then drill 2 more objects
+console.log(garmonbozia.mysteryMeats[3].deliverables[3]()()()()().what.offering);
+
