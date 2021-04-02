@@ -6,8 +6,11 @@ const person = {
 
 person.jump();
 
+
+// function - object - function
 const generateCar = ()=>{
     return {
+        // literal shorthand version
         drive(){
             console.log("Vroom");
         }
