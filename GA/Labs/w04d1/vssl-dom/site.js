@@ -22,7 +22,7 @@ function handleButtonClick() {
     // 4. <div class="item"><h3>...</h3></div>
     newItem.appendChild(h3)
 
-    // 4.1. Add Image
+    // 4.1. Add Image <img />
     let imageInput = document.createElement('img')
     imageInput.setAttribute('src', 'img/left.jpeg')
     newItem.appendChild(imageInput)
@@ -35,7 +35,12 @@ function handleButtonClick() {
 
     newItem.appendChild(pWithAnchor);
 
-    let featuresSection = document.getElementById("features-section")
+    // 1st method in getElementById
+    // let featuresSection = document.getElementById("features-section")
+
+    // 2nd method with query selector - give you 1st element encountered
+    let featuresSection = document.querySelector('#container')
+
     featuresSection.appendChild(newItem)
     // look for method chaining: https://bit.ly/3meHZO4
 }
