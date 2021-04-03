@@ -24,5 +24,6 @@ contactForm.onsubmit = (e) => {
     }
     let formMsg = document.querySelector('.submission-msg')
     console.log(formMsg)
+
     formMsg.style.display = "block"
 }
