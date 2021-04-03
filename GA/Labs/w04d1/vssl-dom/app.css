@@ -74,6 +74,7 @@ body {
 
 #features-section {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row; /* determines to display items as a row, or stacked */
   justify-content: space-between; /* determines the horizontal spacing around each item */
   align-items: center; /* vertical alignment of items */
