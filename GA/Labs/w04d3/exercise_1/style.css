@@ -1,0 +1,12 @@
+body {
+  /* display: flex; */
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.square {
+  width: 100px;
+  height: 100px;
+  background: dimgray;
+  margin: 5px;
+}

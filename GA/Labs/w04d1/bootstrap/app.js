@@ -42,6 +42,7 @@ inputForm.onsubmit = (e) => {
         alert("Please tick the check-box")
         return
     }
+
     alert("Submission is successful")
 
 }

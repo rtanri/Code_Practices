@@ -1,0 +1,23 @@
+.square {
+  background: dimgray;
+  width: 100px;
+  height: 100px;
+  /* margin: 1px; */
+  margin: 0;
+  padding: 0;
+}
+
+.even {
+  background: black;
+}
+
+.odd {
+  background: red;
+}
+
+#canvas {
+  display: flex;
+  flex-direction: row;
+  max-width: 800px;
+  max-height: 800px;
+}
