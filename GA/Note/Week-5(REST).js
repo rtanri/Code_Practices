@@ -30,22 +30,22 @@
 // User deletes an item in shopping cart
 
 
-// 2. JSON
+// //  2. JSON
 
-{
-    "username": "trolololll",
-    "password": "password"
-}
+// {
+//     "username": "trolololll",
+//     "password": "password"
+// }
 
-[{
-        "id": 1,
-        "name": "Jonathan"
-    },
-    {
-        "id": 2,
-        "name": "Kevin"
-    },
-]
+// [{
+//         "id": 1,
+//         "name": "Jonathan"
+//     },
+//     {
+//         "id": 2,
+//         "name": "Kevin"
+//     },
+// ]
 
 
 
@@ -67,3 +67,19 @@
 // allow to update page without reloading the page , can access with no internet
 
 // jQuery.ajax
+
+
+// 6. Get your API in https://newsapi.org/
+// my personal API Key = 94cdcf1dfe5645b58679b65d26e475a3
+// recommened way to authenticate via X APPI Key HTTP header, and Authorization HTTP header
+// copy this inside GET Postman app - https://newsapi.org/v2/everything?q=nft&apiKey=94cdcf1dfe5645b58679b65d26e475a3
+
+// curl: helping us to make HTTP request from terminal. You can copy paste this curl into your terminal
+// import > Raw Text > Paste the Curl > send the request
+
+
+// 7. in NEWS API LABS, we do:
+// - How to create a header
+// - If there is 426 error
+// install $npm i serve 
+// 

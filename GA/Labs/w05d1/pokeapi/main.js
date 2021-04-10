@@ -1,5 +1,4 @@
 jQuery(document).ready(function () {
-    console.log("Pokeapi")
 
     // 5. Work on Submit button function
     let searchSubmitButton = $('#search-form-btn')
