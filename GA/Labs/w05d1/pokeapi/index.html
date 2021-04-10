@@ -14,14 +14,40 @@
     />
 
     <title>Poke AJAX</title>
+
+    <style>
+        .card {
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        /* set the card image size to smaller */
+        .card img {
+            width: 100%;
+        }
+
+        /* set the initial alert message to be hiden */
+        #search-msg {
+            display: none;
+        }
+    </style>
   </head>
 
   <body>
     <div class="container">
+        <div id="search-msg" class="mt-3">
+            <div class="alert alert-danger" role="alert">
+            </div>
+        </div>
+
+
     <h1>Search Pokemon Detail</h1>
 
+    <!-- 2. Bootstrap the FORM -->
       <form>
         <div class="mb-3">
+            <!-- 3. Change the LABEL for with INPUT id -->
           <label for="pokemon_name" class="form-label"
             >Pokemon Name</label
           >
@@ -32,10 +58,11 @@
             aria-describedby="emailHelp"
           />
           
+          <!-- 4. set ID for button -->
         <button id="search-form-btn" type="submit" class="btn btn-primary mt-3">Submit</button>
       </form>
 
-      <div id="search-result"></div>
+      <div id="search-result" class="mt-5"></div>
     </div>
 
     <script
