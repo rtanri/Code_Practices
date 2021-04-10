@@ -25,8 +25,11 @@ jQuery(document).ready(function () {
             method: "GET",
             // see if this API call success or not
             success: function (response) {
-                let searchResultDiv = $('#search-result')
+                let searchMsgElement = $('#search-msg')
+                searchMsgElement.css('display', 'none')
 
+
+                let searchResultDiv = $('#search-result')
                 // modify the img source with TEMPLATE LITERAL with back-tick `
                 searchResultDiv.html(`
                 <div class="card">
