@@ -16,20 +16,37 @@
     <title>Poke AJAX</title>
 
     <style>
+        body{
+          padding-top: 30px;
+        }
+
         .card {
             width: 100%;
             max-width: 300px;
-            margin: 0 auto;
+            margin: 10px 10px;
+            border: 2px solid black;
+            background-color: lightskyblue;
         }
 
         /* set the card image size to smaller */
         .card img {
             width: 100%;
+            border: 1px solid darkgrey;
+            background-color: white;
+
         }
 
         /* set the initial alert message to be hiden */
         #search-msg {
             display: none;
+        }
+
+        #search-result{
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: center;
+          margin: 10px auto;
         }
     </style>
   </head>

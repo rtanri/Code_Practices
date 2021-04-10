@@ -27,16 +27,37 @@ jQuery(document).ready(function () {
                 let searchMsgElement = $('#search-msg')
                 searchMsgElement.css('display', 'none')
 
-
                 let searchResultDiv = $('#search-result')
+                console.log(response)
                 // modify the img source with TEMPLATE LITERAL with back-tick `
                 searchResultDiv.html(`
                 <div class="card">
                     <img src="${response.sprites.front_default}" class="card-img-top" alt="">
                     <div class="card-body">
-                        <h5 class="card-title">${response.name} ${response.id}</h5>
-                        <p class="card-text">${response.base_experience}</p>
+                        <h5 class="card-title">Name: ${response.name}  (#${response.id})</h5>
+                        <p class="card-text">Initial Exp: ${response.base_experience}</p>
+                    </div>
                 </div>
+                <div class="card">
+                    <img src="${response.sprites.back_default}" class="card-img-top" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">Abilities: ${response.abilities[0].ability.name}</h5>
+
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="${response.sprites.front_shiny}" class="card-img-top" alt="">
+                    <div class="card-body">
+                    <p class="card-text">Move 1: ${response.moves[2].move.name}</p>
+                    <p class="card-text">Move 2: ${response.moves[3].move.name}</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="${response.sprites.back_shiny}" class="card-img-top" alt="">
+                    <div class="card-body">
+                        <p class="card-text">Move 3: ${response.moves[5].move.name}</p>
+                        <p class="card-text">Move 3: ${response.moves[7].move.name}</p>
+                    </div>
                 </div>
                 `)
                 // console.log(response.id)
