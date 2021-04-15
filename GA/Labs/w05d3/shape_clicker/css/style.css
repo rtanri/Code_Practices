@@ -19,6 +19,7 @@ div {
   border-bottom: 100px solid red;
 }
 
+/* 1st click */
 .circle {
   display: inline-block;
   width: 100px;
@@ -27,6 +28,7 @@ div {
   border-radius: 50%;
 }
 
+/* 2nd click */
 .square {
   display: inline-block;
   width: 100px;
@@ -34,6 +36,7 @@ div {
   background: red;
 }
 
+/* 3rd click */
 .triangle-down {
   display: inline-block;
   width: 0;
@@ -43,6 +46,7 @@ div {
   border-top: 100px solid red;
 }
 
+/* 4th click */
 .octagon {
   display: inline-block;
   width: 100px;
@@ -75,6 +79,7 @@ div {
   height: 0;
 }
 
+/* 5th click */
 .heart {
   display: inline-block;
   position: relative;
