@@ -9,59 +9,64 @@ window.onload = () => {
         // console.log(rowDiv)
 
         for (let i = 0; i < rowDiv.length; i++) {
-                // // #1. my answer for Step 1
+                // #1. my answer for Step 1
 
-                // let currentRow = rowDiv[i]
-                // let count = 0
-
-                // currentRow.onclick = function (event) {
-                //         let currentlyClickedShapeDiv = event.target
-                //         count += 1
-                //         console.log(count)
-                //         switch (count) {
-                //                 case 1:
-                //                         currentlyClickedShapeDiv.classList.remove('triangle')
-                //                         currentlyClickedShapeDiv.setAttribute('class', 'circle')
-                //                         break
-                //                 case 2:
-                //                         currentlyClickedShapeDiv.classList.remove('circle')
-                //                         currentlyClickedShapeDiv.setAttribute('class', 'square')
-                //                         break
-                //                 case 3:
-                //                         currentlyClickedShapeDiv.classList.remove('square')
-                //                         currentlyClickedShapeDiv.setAttribute('class', 'triangle-down')
-                //                         break
-                //                 case 4:
-                //                         currentlyClickedShapeDiv.classList.remove('triangle-down')
-                //                         currentlyClickedShapeDiv.setAttribute('class', 'octagon')
-                //                         break
-                //                 case 5:
-                //                         currentlyClickedShapeDiv.classList.remove('octagon')
-                //                         currentlyClickedShapeDiv.setAttribute('class', 'heart')
-                //                         break
-                //                 default:
-                //                         currentlyClickedShapeDiv.classList.remove()
-                //                         currentlyClickedShapeDiv.setAttribute('class', 'triangle')
-                //         }
-                //         // currentlyClickedShapeDiv.classList.remove('triangle')
-                //         // currentlyClickedShapeDiv.setAttribute('class', 'circle')
-
-                // }
-
-                // #2. Mentor answer
-                // continue: for (let ..... ){
                 let currentRow = rowDiv[i]
+                let count = 0
+
                 currentRow.onclick = function (event) {
                         let currentlyClickedShapeDiv = event.target
 
-                        // check that event.target is not a row, stop processing
+                        // very important preventError of clicking outside pyramid (<div> class:'row')
                         if (currentlyClickedShapeDiv.classList.contains('row')) {
                                 return
                         }
 
-                        currentlyClickedShapeDiv.setAttribute('class', 'circle')
+                        count += 1
+                        console.log(count)
+                        switch (count) {
+                                case 1:
+                                        currentlyClickedShapeDiv.classList.remove('triangle')
+                                        currentlyClickedShapeDiv.setAttribute('class', 'circle')
+                                        break
+                                case 2:
+                                        currentlyClickedShapeDiv.classList.remove('circle')
+                                        currentlyClickedShapeDiv.setAttribute('class', 'square')
+                                        break
+                                case 3:
+                                        currentlyClickedShapeDiv.classList.remove('square')
+                                        currentlyClickedShapeDiv.setAttribute('class', 'triangle-down')
+                                        break
+                                case 4:
+                                        currentlyClickedShapeDiv.classList.remove('triangle-down')
+                                        currentlyClickedShapeDiv.setAttribute('class', 'octagon')
+                                        break
+                                case 5:
+                                        currentlyClickedShapeDiv.classList.remove('octagon')
+                                        currentlyClickedShapeDiv.setAttribute('class', 'heart')
+                                        break
+                                default:
+                                        currentlyClickedShapeDiv.classList.remove()
+                                        currentlyClickedShapeDiv.setAttribute('class', 'triangle')
+                                        count = 0
+                        }
 
                 }
+
+                // // #2. Mentor answer
+                // // continue: for (let ..... ){
+                // let currentRow = rowDiv[i]
+                // currentRow.onclick = function (event) {
+                //         let currentlyClickedShapeDiv = event.target
+
+                //         // check that event.target is not a row, stop processing
+                //         if (currentlyClickedShapeDiv.classList.contains('row')) {
+                //                 return
+                //         }
+
+                //         currentlyClickedShapeDiv.setAttribute('class', 'circle')
+
+                // }
 
         }
 }
