@@ -83,3 +83,15 @@
 // - If there is 426 error
 // install $npm i serve 
 // 
+
+
+// 8. Event Bubbling
+// event goes up from target element, up to parent element, to parent's parent, until <html> tag
+
+// examples
+
+// let closeBtn = $('.close')
+// closeBtn.on('click', functino(event) {
+//     event.stopPropagation()
+//     console.log('CLOSED BTN has been clicked')
+// })
