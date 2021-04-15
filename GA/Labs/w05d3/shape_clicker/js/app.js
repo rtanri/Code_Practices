@@ -9,6 +9,8 @@
 // after 3rd optimization 
 // funcRef(func)
 
+let numClicks = 0
+
 
 window.onload = () => {
         // console.log('DOM loaded');
@@ -66,7 +68,6 @@ window.onload = () => {
         // #2. Mentor answer
 
         let rowsDiv = document.querySelectorAll('.row')
-        let numClicks = 0
 
         // O(n) * O(1) * O(1)
         for (let i = 0; i < rowsDiv.length; i++) {
@@ -74,41 +75,52 @@ window.onload = () => {
                 let currentRow = rowsDiv[i]
 
                 // 3rd code optimization : anonymous function
-                currentRow.onclick = function (event) {
-                        let currentlyClickedShapeDiv = event.target
-
-                        // check that event.target is not a row, stop processing
-                        // O(1)
-                        if (currentlyClickedShapeDiv.classList.contains('row')) {
-                                return
-                        }
-
-                        // increment number of clicks by 1
-                        numClicks = numClicks + 1
-
-                        // if else statements to set different shape classes
-                        if (numClicks === 1) {
-                                setShape(currentlyClickedShapeDiv, 'circle')
-                        } else if (numClicks === 2) {
-                                setShape(currentlyClickedShapeDiv, 'square')
-                        } else if (numClicks === 3) {
-                                setShape(currentlyClickedShapeDiv, 'triangle-down')
-                        } else if (numClicks === 4) {
-                                setShape(currentlyClickedShapeDiv, 'octagon')
-                        } else if (numClicks === 5) {
-                                setShape(currentlyClickedShapeDiv, 'heart')
-                        } else if (numClicks === 6) {
-                                let allShapes = document.querySelectorAll('.row div')
-
-                                for (let j = 0; j < allShapes.length; j++) {
-                                        let currentShape = allShapes[j]
-                                        currentShape.setAttribute('class', 'triangle')
-                                }
-                                // numClicks === 0
-                        }
-
-                }
+                // we didn't put bracket after handleShapeClick, so that it wasn't get executed directly right page loaded
+                currentRow.onclick = handleShapeClick
         }
+}
+
+
+function handleShapeClick(event) {
+        let currentlyClickedShapeDiv = event.target
+
+        // check that event.target is not a row, stop processing
+        // O(1)
+        if (currentlyClickedShapeDiv.classList.contains('row')) {
+                return
+        }
+
+        // increment number of clicks by 1
+        numClicks = numClicks + 1
+
+        // switch statements to set different shape classes
+        // O(1) - because it only executed 1 case. But if your case have FOR loop (O{n})
+
+        // if you select case 4 : O(n)
+        switch (numClicks) {
+                case 1:
+                        setShape(currentlyClickedShapeDiv, 'circle')
+                        break;
+                case 2:
+                        setShape(currentlyClickedShapeDiv, 'square')
+                        break;
+                case 3:
+                        setShape(currentlyClickedShapeDiv, 'triangle-down')
+                        break;
+                case 4:
+                        setShape(currentlyClickedShapeDiv, 'octagon')
+                        setShape(currentlyClickedShapeDiv, 'octagon')
+                        setShape(currentlyClickedShapeDiv, 'octagon')
+                        break;
+                case 5:
+                        setShape(currentlyClickedShapeDiv, 'heart')
+                        break;
+                case 6:
+                        setShape(currentlyClickedShapeDiv, 'triangle')
+                        numClicks = 0
+                        break;
+        }
+
 }
 
 // 2nd Code optimization
