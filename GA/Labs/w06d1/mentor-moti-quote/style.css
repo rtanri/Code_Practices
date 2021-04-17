@@ -1,0 +1,21 @@
+#background-wrapper {
+        /* 4. set the display flex, and flex attribute */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        /* 1. set this first  */
+        width: 100%;
+        height: 100vh;
+
+        /* 2. set this then */
+        background-size: cover;
+
+        /* 3. text cnter */
+        text-align: center;
+}
+
+
+#quote{
+        margin: 0
+}
