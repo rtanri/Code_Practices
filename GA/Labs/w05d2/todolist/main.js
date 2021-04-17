@@ -90,7 +90,7 @@ window.onload = () => {
 
                 // f. attach event handler on new li, to modify text with line-through
                 doneBtn.onclick = () => {
-                        newP.style.textDecoration = 'line-through'
+                        // newP.style.textDecoration = 'line-through'
                         newLi.setAttribute('class', 'todo-item completed text-center')
                         doneBtn.innerText = "Remove"
                         listCompleted.appendChild(newLi)
