@@ -16,29 +16,30 @@ jQuery(document).ready(function ($) {
         }
     }, )
 
-    // // random quote API - with jQuery Ajax
-    // $.ajax({
-    //     url: "https://goquotes-api.herokuapp.com/api/v1/random?count=1",
-    //     method: "GET",
-    //     success: function (response) {
-    //         let randomQuote = response.quotes[0].text
-    //         let newQuote = document.createElement('p')
-    //         newQuote.innerText = randomQuote
-    //         $('#daily-quote').append(newQuote)
-    //     },
-    //     error: function (err) {
-    //         console.log(err)
-    //     }
-    // })
-
-
-    // random quote API - with Fetch API
-    // const token = 'YOUR_TOKEN_HERE';
-    fetch("https://goquotes-api.herokuapp.com/api/v1/random?count=1", {
-            // headers: {
-            //     Authorization: `token ${token}`
-            // }
-        })
-        .then(res => res.json())
-        .then(json => console.log(json));
+    // random quote API - with jQuery Ajax
+    $.ajax({
+        url: "https://goquotes-api.herokuapp.com/api/v1/random?count=1",
+        method: "GET",
+        success: function (response) {
+            let randomQuote = response.quotes[0].text
+            let newQuote = document.createElement('p')
+            newQuote.innerText = randomQuote
+            $('#daily-quote').append(newQuote)
+        },
+        error: function (err) {
+            console.log(err)
+        }
+    })
 })
+
+
+//     // random quote API - with Fetch API
+//     // const token = 'YOUR_TOKEN_HERE';
+//     fetch("https://goquotes-api.herokuapp.com/api/v1/random?count=1", {
+//             // headers: {
+//             //     Authorization: `token ${token}`
+//             // }
+//         })
+//         .then(res => res.json())
+//         .then(json => console.log(json));
+// })

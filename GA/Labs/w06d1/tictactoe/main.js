@@ -1,7 +1,3 @@
-// 1. Create boolean on true/false for isCrossTurn
-// 2. addEventListener
-// 3. what happended if event.target.innerText has something
-
 let isCrossTurn = true
 let turnTitle = document.querySelector('#your-turn')
 let allSquare = document.querySelectorAll('.grid-item')
@@ -29,9 +25,18 @@ window.onload = function () {
         for (let i = 0; i < allSquare.length; i++) {
                 allSquare[i].addEventListener("click", setSymbol)
         }
-
-
 }
+
+function resetGame() {
+        for (let i = 0; i < allSquare.length; i++) {
+                allSquare[i].innerText = ""
+        }
+        numClicks = 0
+        turnTitle.innerText = "Player 1 turn"
+}
+
+let resetButton = document.getElementById('reset-button')
+resetButton.addEventListener("click", resetGame)
 
 function setSymbol(event) {
         // console.log(event.target)
@@ -59,75 +64,75 @@ function winningCondition() {
                 return
         }
         // row 1 win
-        if (box1.innerText === box2.innerText && box2.innerText === box3.innerText && box1.innerText === box3.innerText) {
+        if (box1.innerText === box2.innerText && box2.innerText === box3.innerText && box1.innerText === box3.innerText && box1.innerText !== "") {
                 // console.log("row 1 match")
                 if (box1.innerText === "X" && box1.innerText === "X") {
                         console.log("Player 1 Win")
-
+                        turnTitle.innerText = "Player 1 Win!"
                 } else {
-                        console.log("Player 2 Win")
+                        turnTitle.innerText = "Player 2 Win!"
 
                 }
         }
         // row 2 win
-        else if (box4.innerText === box5.innerText && box5.innerText === box6.innerText && box4.innerText === box6.innerText) {
+        else if (box4.innerText === box5.innerText && box5.innerText === box6.innerText && box4.innerText === box6.innerText && box4.innerText !== "") {
                 // console.log("row 1 match")
                 if (box4.innerText === "X") {
-                        console.log("Player 1 Win")
+                        turnTitle.innerText = "Player 1 Win!"
                 } else {
-                        console.log("Player 2 Win")
+                        turnTitle.innerText = "Player 2 Win!"
                 }
         }
         // row 3 win
-        else if (box7.innerText === box8.innerText && box8.innerText === box9.innerText && box7.innerText === box9.innerText) {
+        else if (box7.innerText === box8.innerText && box8.innerText === box9.innerText && box7.innerText === box9.innerText && box7.innerText !== "") {
                 // console.log("row 1 match")
                 if (box7.innerText === "X") {
-                        console.log("Player 1 Win")
+                        turnTitle.innerText = "Player 1 Win!"
                 } else {
-                        console.log("Player 2 Win")
+                        turnTitle.innerText = "Player 2 Win!"
                 }
         }
         // column 1
-        else if (box1.innerText === box4.innerText && box4.innerText === box7.innerText && box1.innerText === box7.innerText) {
+        else if (box1.innerText === box4.innerText && box4.innerText === box7.innerText && box1.innerText === box7.innerText && box4.innerText !== "") {
                 // console.log("row 1 match")
                 if (box1.innerText === "X") {
-                        console.log("Player 1 Win")
+                        turnTitle.innerText = "Player 1 Win!"
                 } else {
-                        console.log("Player 2 Win")
+                        turnTitle.innerText = "Player 2 Win!"
                 }
         }
         // column 2
-        else if (box2.innerText === box5.innerText && box5.innerText === box8.innerText && box2.innerText === box8.innerText) {
+        else if (box2.innerText === box5.innerText && box5.innerText === box8.innerText && box2.innerText === box8.innerText && box2.innerText !== "") {
                 // console.log("row 1 match")
                 if (box2.innerText === "X") {
-                        console.log("Player 1 Win")
+                        turnTitle.innerText = "Player 1 Win!"
                 } else {
-                        console.log("Player 2 Win")
+                        turnTitle.innerText = "Player 2 Win!"
                 }
         }
         // column 3
-        else if (box3.innerText === box6.innerText && box6.innerText === box9.innerText && box3.innerText === box9.innerText) {
+        else if (box3.innerText === box6.innerText && box6.innerText === box9.innerText && box3.innerText === box9.innerText && box3.innerText !== "") {
                 // console.log("row 1 match")
                 if (box3.innerText === "X") {
-                        console.log("Player 1 Win")
+                        turnTitle.innerText = "Player 1 Win!"
                 } else {
-                        console.log("Player 2 Win")
+                        turnTitle.innerText = "Player 2 Win!"
                 }
         }
         // diagonal 1
-        else if (box1.innerText === box5.innerText && box5.innerText === box9.innerText && box1.innerText === box9.innerText) {
+        else if (box1.innerText === box5.innerText && box5.innerText === box9.innerText && box1.innerText === box9.innerText && box5.innerText !== "") {
                 if (box1.innerText === "X") {
-                        console.log("Player 1 Win")
+                        turnTitle.innerText = "Player 1 Win!"
                 } else {
-                        console.log("Player 2 Win")
+                        turnTitle.innerText = "Player 2 Win!"
                 }
         }
         // diagonal 2
-        else if (box3.innerText === box5.innerText && box5.innerText === box7.innerText && box3.innerText === box7.innerText) {
+        else if (box3.innerText === box5.innerText && box5.innerText === box7.innerText && box3.innerText === box7.innerText && box7.innerText !== "") {
                 if (box3.innerText === "X") {
-                        console.log("Player 1 Win")
+                        turnTitle.innerText = "Player 1 Win!"
                 } else {
-                        console.log("Player 2 Win")
+                        turnTitle.innerText = "Player 2 Win!"
                 }
         }
 

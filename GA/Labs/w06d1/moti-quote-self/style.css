@@ -10,7 +10,7 @@ body{
         /* this is very important
         to set the height equal to background size */
         height:100vh; 
-
+        width: 100%;
 }
 
 
