@@ -10,6 +10,6 @@
   "license": "ISC",
   "dependencies": {
     "lodash": "^4.17.21",
-    "axios": "^0.20.0"
+    "axios": "^0.21.1"
   }
 }
