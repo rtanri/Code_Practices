@@ -1,18 +1,39 @@
 /* ============ Part 1 & Bonus ============== */
 
-const sightingsData = require('./models/sightings.json')
+const sightingsData = require("./sightings.json");
 
+/* Sample input:
+node helper.js shape=sphere
+node helper.js city=Sherwood
+Expected output: Sightings where the state property = "SC"
+ */
 
-//1. Get the input ("state=SC")
+//1. Get the inputs ("state=SC", "city=Sherwood")
+
 const input = process.argv[2]; // "state=SC"
-console.log()
 
-//2. Use that input , extract the value "SC" and assign a variable called stateQuery
+//2. Use that input , extract the value "SC" and assign a variable called valueQuery
 //2a. Extract the value "state", "city", "shape"
-const stateQuery = extractValue(input);
 
-// 3. Find all items in the sightingsData array where the state === stateQuery
-const results = sightingsData.filter(item => item.state === stateQuery);
+const valueQuery = extractValue(input); // SC, Sherwood
+const paramQuery = extractParam(input); //city, shape
+
+/*
+ {
+    "date": "1/31/15 21:30",
+    "city": "Conway",
+    "state": "SC",
+    "shape": "Fireball",
+    "duration": "5 minutes",
+    "description": "9 bright orange fireballs falling to the ground from the sky...",
+  },
+*/
+
+// 3. Find all items in the sightingsData array where the item[paramQuery] === valueQuery
+
+const results = sightingsData.filter(
+        item => item[paramQuery].toLowerCase() === valueQuery.toLowerCase()
+);
 
 results.forEach(formatResults);
 
@@ -22,7 +43,13 @@ function extractValue(str) {
         return str.split("=")[1];
 }
 
-/* MAKE THIS FORMAT
+// Sample input: "state=SC", "city=Sherwood"
+// Expected output: "state", "city"
+function extractParam(str) {
+        return str.split("=")[0];
+}
+
+/*
 =====================
 Date: 1/31/15/ 21:30
 City: Conway
@@ -47,83 +74,4 @@ function formatResults(sightingObject) {
         console.log(`Duration: ${sightingObject.duration}`);
 }
 
-
-// for (const data of sightingsData) {
-//         switch (customKey) {
-//                 case "date":
-//                         if (data.date === value) {
-//                                 dataArray.push(data)
-//                         }
-//                         break;
-//                 case "city":
-//                         if (data.city === value) {
-//                                 dataArray.push(data)
-//                         }
-//                         break;
-//                 case "state":
-//                         if (data.state === value) {
-//                                 dataArray.push(data)
-//                         }
-//                         break;
-//                 case "shape":
-//                         if (data.shape === value) {
-//                                 dataArray.push(data)
-//                         }
-//                         break;
-//                 case "duration":
-//                         if (data.duration === value) {
-//                                 dataArray.push(data)
-//                         }
-//                         break;
-//                 case "description":
-//                         if (data.description.includes(value)) {
-//                                 dataArray.push(data)
-//                         }
-//                         break;
-//         }
-// }
-// console.log(dataArray)
 /* ============ Part 1 Ended ============== */
-
-
-// /* ============ Part 2 Start ============== */
-// const sightingsData = require('./models/sightings.json')
-
-// const express = require('express')
-// const app = express()
-// const port = 3000
-// let dataArray = []
-
-// let checkingValue = {
-//         state: "",
-//         city: "",
-//         shape: "",
-//         date: "",
-// }
-
-// function selectSearchedKey() {
-//         if (checkingValue.state.value != "") {
-//                 console.log(checkingValue.child)
-//         }
-// }
-
-// app.get("/sightings", (req, res) => {
-//         checkingValue.state = req.query.state
-//         checkingValue.city = req.query.city
-//         checkingValue.shape = req.query.shape
-//         checkingValue.date = req.query.date
-
-//         // selectSearchedKey()
-
-//         let filteredValue = sightingsData.filter(function (data) {
-//                 return data.state === checkingValue.state &&
-//                         data.shape === checkingValue.shape
-//                 // && data.city === checkingValue.city
-//         })
-//         res.send(filteredValue)
-// });
-
-
-// app.listen(port, () => {
-//         console.log(`Example app listening at http://localhost:${port}`)
-// })

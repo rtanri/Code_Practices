@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>X-Files</h1>
+    <form action="/sightings">
+        <input required name="state" placeholder="State" />
+        <input required name="shape" placeholder="Shape" />
+        <input required name="city" placeholder="City" />
+        <button>Submit</button>
+    </form>
+
+    <% results.forEach(result => { %>
+        <p>
+            <ul>
+                <li>Date: <%= result.date %> </li>
+                <li>City: <%= result.city %> </li>
+                <li>State: <%= result.state %> </li>
+                <li>Shape: <%= result.shape %> </li>
+                <li>Duration: <%= result.duration %> </li>
+                <li>Description: <%= result.description %> </li>
+            </ul>
+        </p>
+    <% }) %> 
+
+
+
+</body>
+</html>
