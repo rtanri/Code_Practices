@@ -1,7 +1,14 @@
 const express = require('express')
 const app = express()
 const port = 3000
-const pokemon = require('./models/pokemon')
+const {
+        pokemon,
+        Pokemon
+} = require('./models/pokemon')
+
+// to accpet the post in object JSON format
+app.use(express.json())
+app.use(express.urlencoded())
 
 app.set('view engine', 'ejs')
 
@@ -10,7 +17,6 @@ app.get('/', (req, res) => {
                 pokemon
         })
 })
-
 
 app.get('/pokemon/:id', (req, res) => {
         const selectedPokemon = pokemon[Number(req.params.id)]
@@ -23,9 +29,23 @@ app.get('/pokemon/:id', (req, res) => {
         })
 })
 
-app.post('/pokemon', (req, res) => {
-        res.send('pokemon')
+
+app.get('/create', (req, res) => {
+        res.render('create')
 })
+
+
+app.post('/pokemon', (req, res) => {
+        console.log(`Name: ${req.body.name}, Image: ${req.body.img}`)
+        console.log(pokemon)
+        // req.body means the request comes from the body.
+        const newPokemon = new Pokemon(req.body.name, req.body.img, pokemon.length)
+        pokemon.push(newPokemon);
+        res.render('created', {
+                pokemon: newPokemon
+        })
+})
+
 
 app.listen(port, () => {
         console.log(`Example app listening at http://localhost:${port}`)

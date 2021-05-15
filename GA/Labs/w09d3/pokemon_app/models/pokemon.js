@@ -44,5 +44,8 @@ const pokemon = [{
 // make multiple Pokemon instances 
 // module.exports = pokemon.map(element => new Pokemon(element.name, element.img, pokemon.indexOf(element)))
 
-module.exports = pokemon.map((element, index) =>
-        new Pokemon(element.name, element.img, index))
+module.exports = {
+        pokemon: pokemon.map((element, index) =>
+                new Pokemon(element.name, element.img, index)),
+        Pokemon
+}
