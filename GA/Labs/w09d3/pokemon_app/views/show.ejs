@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head') %>
+</head>
+<body>
+    <h1>Gotta Catch 'Em All</h1>
+    <h2><%= pokemon.formatName() %></h2>
+    <img src="<%= pokemon.img %>">
+
+    <form action="/">
+        <input type="submit" value="Go Back">
+    </form>
+    
+    <form id="before" action="/pokemon/<%= beforePokemonIndex %>">
+        <input type="submit" value="before">
+        </form>
+
+        <form id="next" action="/pokemon/<%= nextPokemonIndex %>">
+                <input type="submit" value="next">
+        </form>
+<!-- <button type="button" onclick="showNext()">Next</button> -->
+   
+</body>
+</html>
+
