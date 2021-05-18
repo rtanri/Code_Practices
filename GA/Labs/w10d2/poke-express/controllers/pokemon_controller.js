@@ -17,26 +17,20 @@ module.exports = {
         },
 
         show: (req, res) => {
-                let id = Number(req.params.id)
+                let validatedID = validatePokemonID(req.params.id)
 
-                // check if id is of a number type
-                if (isNaN(id)) {
+                if (validatedID === false) {
                         res.statusCode = 400
-                        res.send('id must be a valid number')
+                        res.send('given id is invalid')
                         return
                 }
 
-                // check that given id is within expected range
-                // undefined, null, 0, '', {}, []
-                // these are all considered "empty"
-                if (_.isEmpty(pokemon[id])) {
-                        res.statusCode = 404
-                        res.send('cannot find pokemon with the given id')
-                        return
-                }
+                let selectedPokemonIndex = pokemon.findIndex(element => {
+                        return element.index === validatedID
+                })
 
                 res.render('show', {
-                        pokemon: pokemon[id]
+                        pokemon: pokemon[selectedPokemonIndex]
                 });
         },
 
@@ -55,9 +49,80 @@ module.exports = {
 
                 const newPokemon = new Pokemon(pokemon.length, givenName, req.body.img);
                 pokemon.push(newPokemon);
-                res.render('created', {
-                        pokemon: newPokemon
+                res.redirect('/pokemon')
+        },
+
+        editPokemonForm: (req, res) => {
+                let validatedID = validatePokemonID(req.params.id)
+
+                if (validatedID === false) {
+                        res.statusCode = 400
+                        res.send('given id is invalid')
+                        return
+                }
+
+                res.render('edit', {
+                        pokemon: pokemon[validatedID],
+                        pokemonID: validatedID
                 });
+        },
+
+        update: (req, res) => {
+                let validatedID = validatePokemonID(req.params.id)
+
+                if (validatedID === false) {
+                        res.statusCode = 400
+                        res.send('given id is invalid')
+                        return
+                }
+
+                let selectedPokemon = pokemon[validatedID]
+                selectedPokemon.name = req.body.name
+                selectedPokemon.img = req.body.img
+
+                res.redirect('/pokemon/' + validatedID)
+        },
+
+        delete: (req, res) => {
+                let validatedID = validatePokemonID(req.params.id)
+
+                if (validatedID === false) {
+                        res.statusCode = 400
+                        res.send('given id is invalid')
+                        return
+                }
+
+                // find pokemon's arr index
+                let selectedPokemonIndex = pokemon.findIndex(element => {
+                        return element.index === validatedID
+                })
+
+                // delete one item from the arr based on index
+                pokemon.splice(selectedPokemonIndex, 1)
+
+                res.redirect('/pokemon')
         }
 
+}
+
+function validatePokemonID(id) {
+        id = Number(id)
+
+        // check if id is of a number type
+        if (isNaN(id)) {
+                return false
+        }
+
+        // check that given id is within expected range
+        // undefined, null, 0, '', {}, []
+        // these are all considered "empty"
+        let selectedPokemon = pokemon.find(element => {
+                return element.index === id
+        })
+
+        if (!selectedPokemon) {
+                return false
+        }
+
+        return id
 }

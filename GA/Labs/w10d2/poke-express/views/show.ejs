@@ -6,21 +6,21 @@
 <body>
     <h1>Gotta Catch 'Em All</h1>
     <h2><%= pokemon.formatName() %></h2>
-    <img src="<%= pokemon.img %>">
+    
+    <figure>
+        <img src="<%= pokemon.img %>">
+    </figure>
+    <div>
+        <a class="btn btn-secondary" href="/pokemon">Go Back</a>
+        <a class="btn btn-primary" href="/pokemon/<%= pokemon.index %>">Edit</a>
+        <form method="post" action="/pokemon/<%= pokemon.index %>?_method=DELETE">
+            <button class="btn btn-danger">Delete</button>
+        </form>
 
+    </div>
+    
     <form action="/">
         <input type="submit" value="Go Back">
     </form>
-    
-    <form id="before" action="/pokemon/<%= beforePokemonIndex %>">
-        <input type="submit" value="before">
-        </form>
-
-        <form id="next" action="/pokemon/<%= nextPokemonIndex %>">
-                <input type="submit" value="next">
-        </form>
-<!-- <button type="button" onclick="showNext()">Next</button> -->
-   
 </body>
 </html>
-

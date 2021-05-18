@@ -7,12 +7,12 @@
     <h1>See All The Pokemon!</h1>
     <div class="card-group">
         <% pokemon.forEach(element => { %>
-            <%- include('./partials/pokemon-card', {element}) %>
+            <%- include('./partials/pokemon-card', { element }) %>
         <% }) %>
     </div>
-    <!-- <form action="/create">
-        <input type="button" value="Add New Pokemon">
-    </form> -->
     <a href="/create" class="btn btn-primary">Add New Pokemon</a>
+</body>
+</html>
+    
 </body>
 </html>
