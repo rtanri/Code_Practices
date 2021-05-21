@@ -1,0 +1,18 @@
+.couleur {
+    display: inline-block;
+    background: dimgray;
+    width: 200px;
+    height: 200px;
+}
+
+.red {
+    background: firebrick;
+}
+
+.white {
+    background: ivory;
+}
+
+.blue {
+    background: cornflowerblue;
+}

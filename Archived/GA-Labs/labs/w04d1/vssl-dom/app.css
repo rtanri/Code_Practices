@@ -1,0 +1,103 @@
+h1, h2 {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+}
+
+.wrapper {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+#landing-bg {
+    /* background-image: ; */
+    background: url(img/sailboat.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: calc(100vh - 75px);
+}
+
+#site-header nav {
+    background: #3e3e3e;
+    padding: 25px 0;
+}
+
+#site-header nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+#site-header nav ul li {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+#site-header nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+#intro-text {
+    font-size: 36px;
+    font-weight: 300;
+    text-align: center;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    border-bottom: 1px dotted #eaeaea;
+}
+
+#intro-text p {
+    line-height: 1.8;
+}
+
+#site-footer {
+    padding: 50px 0;
+    margin-top: 100px;
+    border-top: 1px solid #eaeaea;
+}
+
+#site-footer ul {
+    list-style-type: none;
+    text-align: center;
+    font-size: 24px;
+    margin: 0;
+    padding: 0;
+}
+
+#site-footer ul li {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+#features-section {
+    display: flex;
+    flex-direction: row; /* determines to display items as a row, or stacked */
+    justify-content: space-between; /* determines the horizontal spacing around each item */
+    align-items: center; /* vertical alignment of items */
+}
+
+#features-section .item {
+    width: 33.333333%;
+    margin: 0 15px;
+}
+
+#features-section .item img {
+    width: 100%;
+}
+
+#header-text-wrapper {
+    color: white;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

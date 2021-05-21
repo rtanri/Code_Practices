@@ -86,3 +86,4 @@
 // commonly used:
 // <% 'Scriptlet' tag, to write a control-flow, no output. can use function IF //use javascript function/syntax use 2 symbols
 // <%= Outputs the value into the template (HTML) // dynamic variable use 3 symbols
+// <%- Set a 'partial' of the HTML , can be HEAD, header, footer

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head') %>
+</head>
+<body>
+    <h1>Gotta Catch 'Em All</h1>
+    <h2><%= pokemon.formatName() %></h2>
+    <figure>
+        <img src="<%= pokemon.img %>">
+    </figure>
+
+    <div>
+        <a class="btn btn-link" href="/pokemon">Go Back</a>
+        <a class="btn btn-primary" href="/pokemon/<%= pokemon.index %>/edit">Edit</a>
+
+        <form method="post" action="/pokemon/<%= pokemon.index %>?_method=DELETE">
+            <button class="btn btn-danger" type="submit">Delete</button>
+        </form>
+        
+    </div>
+</body>
+</html>
