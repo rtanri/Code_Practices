@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/head') %>
+  </head>
+  <body>
+    <h1>All Biscoff</h1>
+    <div class="card-group">
+      <% bakedGoods.forEach(element => { %> <%-
+      include('./partials/display-card', { element }) %> <% }) %>
+    </div>
+  </body>
+</html>

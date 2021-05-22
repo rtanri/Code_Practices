@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/head') %>
+  </head>
+  <body>
+    <h1>Sweet Treats for Your Sweet Cravings</h1>
+
+    <div>
+      <h3>Name: <%= bakedGoods.name %></h3>
+      <p>Price: <%= bakedGoods.price %></p>
+      <img src="<%= bakedGoods.image %>" class="card-img-top" alt="..." />
+    </div>
+
+    <div>
+      <a class="btn btn-secondary" href="/">Back</a>
+    </div>
+  </body>
+</html>
