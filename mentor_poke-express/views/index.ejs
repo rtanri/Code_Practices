@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/head') %>
+  </head>
+  <body>
+    <h1>See All The Pokemon!</h1>
+    <div class="card-group">
+      <% pokemon.forEach(element => { %> <%- include('./partials/pokemon-card',
+      { element }) %> <% }) %>
+    </div>
+  </body>
+</html>
