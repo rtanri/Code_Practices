@@ -1,0 +1,22 @@
+<%- include('../partials/head') %>
+
+<div class="container">
+
+    <div class="card">
+        <img src="<%= bakedgood.image %>" class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title"><%= bakedgood.name %></h5>
+          <p class="card-text"><%= bakedgood.price %></p>
+          
+          <div class="btn-group">
+            <a href="/bakedgoods/<%= bakedgoodIndex %>/edit" class="btn btn-primary">Edit</a>
+            <form method="post" action="/bakedgoods/<%= bakedgoodIndex %>?_method=DELETE">
+              <button type="submit" class="btn btn-danger">Delete</a>
+            </form>
+          </div>
+        </div>
+    </div>
+
+</div>
+
+<%- include('../partials/foot') %>
