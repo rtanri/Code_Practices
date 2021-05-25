@@ -1,3 +1,13 @@
+const mongoose = require("mongoose");
+const bakedgoodSchema = new mongoose.Schema({
+  slug: { type: String, required: true, unique: true },
+  name: { type: String, required: true },
+  price: { type: Number, required: true },
+  image: { type: String, required: true },
+});
+
+const BakedGoodModel = mongoose.model("BakedGood", bakedgoodSchema);
+
 module.exports = {
   bakedGoods: [
     {
@@ -37,4 +47,5 @@ module.exports = {
         "https://img.huffingtonpost.com/asset/5b9c6b431f000050002135f0.jpeg",
     },
   ],
+  BakedGoodModel: BakedGoodModel,
 };

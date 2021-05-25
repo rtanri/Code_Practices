@@ -3,13 +3,15 @@
 // =======================================
 const express = require("express");
 const methodOverride = require("method-override");
-const bakedgoodsController = require("./controllers/bakedgoods_controller");
 const mongoose = require("mongoose");
-const mongoURI = "mongodb://localhost:27017/biscoff_bakery";
-mongoose.set("useFindAndModify", false);
+const bakedgoodsController = require("./controllers/bakedgoods_controller");
 
 const app = express();
 const port = 3000;
+const mongoURI = "mongodb://localhost:27017/biscoff_bakery";
+
+mongoose.set("useFindAndModify", false);
+mongoose.set("useCreateIndex", true);
 
 app.set("view engine", "ejs");
 // app.set('views', './views')
