@@ -1,59 +1,109 @@
-// =======================================
-//              DEPENDENCIES
-// =======================================
-const express = require("express");
-const methodOverride = require("method-override");
-const mongoose = require("mongoose");
-const bakedgoodsController = require("./controllers/bakedgoods_controller");
+const _ = require("lodash");
+const { bakedGoods, BakedGoodModel } = require("../models/bakedgoods");
 
-const app = express();
-const port = 3000;
-const mongoURI = "mongodb://localhost:27017/biscoff_bakery";
+module.exports = {
+  index: async (req, res) => {
+    let bakedGoods = [];
 
-mongoose.set("useFindAndModify", false);
-mongoose.set("useCreateIndex", true);
+    try {
+      bakedGoods = await BakedGoodModel.find();
+    } catch (err) {
+      res.statusCode(500);
+      return "server error";
+    }
 
-app.set("view engine", "ejs");
-// app.set('views', './views')
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(methodOverride("_method"));
+    res.render("bakedgoods/index", {
+      bakedgoods: bakedGoods,
+    });
+  },
 
-// =======================================
-//              ROUTES
-// =======================================
+  newForm: (req, res) => {
+    res.render("bakedgoods/new");
+  },
 
-// index
-app.get("/bakedgoods", bakedgoodsController.index);
+  show: (req, res) => {
+    BakedGoodModel.findOne({ slug: req.params.slug })
+      .then(item => {
+        // if item is not found, redirect to homepage
+        if (!item) {
+          res.redirect("/bakedgoods");
+          return;
+        }
 
-// new
-app.get("/bakedgoods/new", bakedgoodsController.newForm);
+        res.render("bakedgoods/show", {
+          bakedgood: item,
+          bakedgoodIndex: req.params.slug,
+        });
+      })
+      .catch(err => {
+        console.log(err);
+        res.redirect("/bakedgoods");
+      });
+  },
 
-// show
-app.get("/bakedgoods/:id", bakedgoodsController.show);
+  create: (req, res) => {
+    // validate input here
 
-// create
-app.post("/bakedgoods", bakedgoodsController.create);
+    let slug = _.kebabCase(req.body.name);
 
-// edit
-app.get("/bakedgoods/:id/edit", bakedgoodsController.editForm);
+    BakedGoodModel.create({
+      name: req.body.name,
+      price: req.body.price,
+      image: req.body.image,
+      slug: slug,
+    })
+      .then(createResp => {
+        res.redirect("/bakedgoods");
+      })
+      .catch(err => {
+        console.log(err);
+        res.redirect("/bakedgoods/new");
+      });
+  },
 
-// update
-app.patch("/bakedgoods/:id", bakedgoodsController.update);
+  editForm: (req, res) => {
+    BakedGoodModel.findOne({ slug: req.params.slug })
+      .then(item => {
+        res.render("bakedgoods/edit", {
+          bakedgood: item,
+          bakedgoodIndex: req.params.slug,
+        });
+      })
+      .catch(err => {
+        res.redirect("/bakedgoods");
+      });
+  },
 
-// delete
-app.delete("/bakedgoods/:id", bakedgoodsController.delete);
+  update: (req, res) => {
+    let newSlug = _.kebabCase(req.body.name);
 
-// =======================================
-//              LISTENER
-// =======================================
+    BakedGoodModel.updateOne(
+      { slug: req.params.slug },
+      {
+        $set: {
+          name: req.body.name,
+          price: req.body.price,
+          image: req.body.image,
+          slug: newSlug,
+        },
+      }
+    )
+      .then(updateResp => {
+        res.redirect("/bakedgoods/" + newSlug);
+      })
+      .catch(err => {
+        res.redirect("/bakedgoods/" + req.params.slug + "/show");
+      });
+  },
 
-console.log(mongoose.connect(mongoURI));
-// this is a promise
-// mongoose
-//   .connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
-//   .then(response => {
-//     app.listen(port, () => {
-//       console.log(`Biscoff Bakery app listening on port: ${port}`);
-//     });
-//   });
+  delete: (req, res) => {
+    BakedGoodModel.deleteOne({ slug: req.params.slug })
+      .then(deleteResp => {
+        res.redirect("/bakedgoods");
+      })
+      .catch(err => {
+        console.log(err);
+        res.redirect("/bakedgoods");
+      });
+  },
+};

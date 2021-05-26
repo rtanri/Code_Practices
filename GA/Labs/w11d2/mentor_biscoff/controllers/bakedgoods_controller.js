@@ -1,7 +1,17 @@
-const { bakedGoods } = require("../models/bakedgoods");
+const _ = require("lodash");
+const { bakedGoods, BakedGoodModel } = require("../models/bakedgoods");
 
 module.exports = {
-  index: (req, res) => {
+  index: async (req, res) => {
+    let bakedGoods = [];
+
+    try {
+      bakedGoods = await BakedGoodModel.find();
+    } catch (err) {
+      res.statusCode(500);
+      return "server error";
+    }
+
     res.render("bakedgoods/index", {
       bakedgoods: bakedGoods,
     });
@@ -12,24 +22,42 @@ module.exports = {
   },
 
   show: (req, res) => {
-    // validate input
+    BakedGoodModel.find({ slug: req.params.slug })
+      .then(item => {
+        // if item is not found, redirect to homepage
+        if (!item) {
+          res.redirect("/bakedgoods");
+          return;
+        }
 
-    res.render("bakedgoods/show", {
-      bakedgood: bakedGoods[req.params.id],
-      bakedgoodIndex: req.params.id,
-    });
+        res.render("bakedgoods/show", {
+          bakedgood: item,
+          bakedgoodIndex: req.params.slug,
+        });
+      })
+      .catch(err => {
+        res.redirect("/bakedgoods");
+      });
   },
 
   create: (req, res) => {
-    // validate input
+    // validate input here
 
-    bakedGoods.push({
+    let slug = _.kebabCase(req.body.name);
+
+    BakedGoodModel.create({
       name: req.body.name,
       price: req.body.price,
       image: req.body.image,
-    });
-
-    res.redirect("/bakedgoods");
+      slug: slug,
+    })
+      .then(createResp => {
+        res.redirect("/bakedgoods");
+      })
+      .catch(err => {
+        console.log(err);
+        res.redirect("/bakedgoods/new");
+      });
   },
 
   editForm: (req, res) => {
