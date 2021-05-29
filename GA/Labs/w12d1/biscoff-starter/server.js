@@ -9,9 +9,14 @@ const session = require("express-session");
 const productController = require("./controllers/products_controller");
 const productRatingController = require("./controllers/product_ratings_controller");
 const userController = require("./controllers/user_controller");
+const {
+  authenticatedOnly: authenticatedOnlyMiddleware,
+  guestOnly: guestOnlyMiddleware,
+  setUserVarMiddleware,
+} = require("./middlewares/auth-middleware");
 
 const app = express();
-const port = 3400;
+const port = 3000;
 const mongoURI = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}/${process.env.DB_NAME}`;
 
 mongoose.set("useFindAndModify", false);
@@ -31,6 +36,7 @@ app.use(
     cookie: { path: "/", secure: false, maxAge: 3600000 }, // 3600000ms = 3600s = 60mins, cookie expires in an hour
   })
 );
+app.use(setUserVarMiddleware);
 
 // =======================================
 //              ROUTES
@@ -65,15 +71,21 @@ app.post("/products/:slug/ratings", productRatingController.create);
 
 // users
 
-app.get("/users/register", userController.registerForm);
+app.get("/users/register", guestOnlyMiddleware, userController.registerForm);
 
-app.post("/users/register", userController.registerUser);
+app.post("/users/register", guestOnlyMiddleware, userController.registerUser);
 
-app.get("/users/login", userController.loginForm);
+app.get("/users/login", guestOnlyMiddleware, userController.loginForm);
 
-app.post("/users/login", userController.loginUser);
+app.post("/users/login", guestOnlyMiddleware, userController.loginUser);
 
-app.get("/users/dashboard", userController.dashboard);
+app.get(
+  "/users/dashboard",
+  authenticatedOnlyMiddleware,
+  userController.dashboard
+);
+
+app.post("/users/logout", authenticatedOnlyMiddleware, userController.logout);
 
 // =======================================
 //              LISTENER

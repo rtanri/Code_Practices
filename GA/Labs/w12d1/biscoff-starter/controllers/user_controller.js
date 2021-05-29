@@ -93,12 +93,16 @@ module.exports = {
       return;
     }
 
-    //     res.redirect("/products");
     req.session.user = user;
-    res.redirect("/users/register");
+    res.redirect("/users/dashboard");
   },
 
   dashboard: (req, res) => {
-    res.render("users/register");
+    res.render("users/dashboard");
+  },
+
+  logout: (req, res) => {
+    req.session.destroy();
+    res.redirect("/products");
   },
 };
