@@ -1,4 +1,7 @@
-/* ============ Method Override ============ */
+/* ============ Mongoose ============ */
+// Mongoose is an Object Data Modeling (ODM) library for MongoDB and Node.js. It manages relationships between data, provides schema validation, and is used to translate between objects in code and the representation of those objects in MongoDB.
+
+/* ============ Synchronous & Asynchronous ============ */
 
 /* 
 Synchronous & Async
@@ -44,3 +47,17 @@ One way to ensure code is executing in order despite some operations taking time
 */
 
 // => when to use Promise method chaining or Async&Await
+
+/* ============ Biscoff Labs Mongoose ============ */
+
+// in mongoose model folder, there is SLUG.
+// introduce a Slug - is a human readable unique ID component. All items in shopee has unique identifier, instead of number, they used slug. it help in your SEO.
+
+/* ============ Environment  ============ */
+
+// to save password and credentials.
+
+/* ============ Time Format ============ */
+// saving in neutral format like GMT+0
+// https://www.epochconverter.com/
+// then in our application, we just get our stored time + their local timezone (GMT+8)

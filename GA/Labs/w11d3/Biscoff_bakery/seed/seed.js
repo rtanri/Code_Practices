@@ -2,8 +2,7 @@ const mongoose = require("mongoose");
 const _ = require("lodash");
 const { BakedGoodModel } = require("../models/bakedgoods");
 
-const mongoURI =
-  "mongodb+srv://biscoff_admin:7puZSDjVJLRwe4UQ@cluster0.d73ns.mongodb.net/biscoff_bakery";
+const mongoURI = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}/${process.env.DB_NAME}`;
 let data = [
   {
     name: "Biscoff Spready Gooey Butter Cake",

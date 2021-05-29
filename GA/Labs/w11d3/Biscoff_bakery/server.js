@@ -8,9 +8,8 @@ const mongoose = require("mongoose");
 const bakedgoodsController = require("./controllers/bakedgoods_controller");
 
 const app = express();
-const port = 3000;
-const mongoURI =
-  "mongodb+srv://bakery_admin:JNRfnsr90OaBmgK1@cluster0.d73ns.mongodb.net/biscoff_bakery";
+const port = 3100;
+const mongoURI = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}/${process.env.DB_NAME}`;
 
 mongoose.set("useFindAndModify", false);
 mongoose.set("useCreateIndex", true);
