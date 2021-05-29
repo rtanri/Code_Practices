@@ -7,9 +7,10 @@ const methodOverride = require("method-override");
 const mongoose = require("mongoose");
 const productController = require("./controllers/products_controller");
 const productRatingController = require("./controllers/product_ratings_controller");
+const userController = require("./controllers/user_controller");
 
 const app = express();
-const port = 3200;
+const port = 3300;
 const mongoURI = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}/${process.env.DB_NAME}`;
 
 mongoose.set("useFindAndModify", false);
@@ -27,6 +28,12 @@ app.use(methodOverride("_method"));
 
 // index
 app.get("/products", productController.index);
+
+// registration
+app.get("/products/registration", userController.registration);
+
+// login
+app.get("/products/login", userController.login);
 
 // new
 app.get("/products/new", productController.newForm);

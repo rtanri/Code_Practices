@@ -1,0 +1,30 @@
+<%- include('../partials/head') %>
+
+<div class="container">
+  <h1>Registration Page</h1>
+  <form method="POST" action="/products">
+    <div class="mb-3">
+      <label for="name" class="form-label">Email</label>
+      <input
+        type="text"
+        class="form-control"
+        id="email"
+        name="email"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="name" class="form-label">Password</label>
+      <input
+        type="text"
+        class="form-control"
+        id="pwsalt"
+        name="pwsalt"
+      />
+    </div>
+
+    </div>
+    <button type="submit" class="btn btn-primary">Update Product</button>
+  </form>
+</div>
+
+<%- include('../partials/foot') %>
