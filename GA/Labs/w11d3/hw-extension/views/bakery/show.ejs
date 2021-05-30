@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include('../partials/head') %>
+    </head>
+    <body>
+        <h1><%= cake.name %></h1>
+        <div class="container d-flex flex-column align-items-center">
+            <img src="<%= cake.image %>" class="cakeImage smallMargin" />
+
+            <h4 class="smallMargin">Price: <%= cake.price %></h4>
+            <h5 class="smallMargin">Index: <%= cakeIndex %></h5>
+
+            <div class="d-flex flex-row">
+                <a href="/bakery" class="btn btn-secondary smallMargin">Back</a>
+                <a
+                    href="/bakery/<%= cakeIndex %>/edit"
+                    class="btn btn-secondary smallMargin"
+                >
+                    Edit
+                </a>
+                <form
+                    method="post"
+                    action="/bakery/<%= cakeIndex %>?_method=DELETE"
+                >
+                    <button type="submit" class="btn btn-danger smallMargin">
+                        Remove
+                    </button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

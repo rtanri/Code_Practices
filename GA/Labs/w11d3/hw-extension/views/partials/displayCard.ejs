@@ -1,0 +1,20 @@
+<div class="col-3 my-1 mx-1">
+    <div class="card">
+        <div
+            class="imageContainer"
+            style="
+                background: url(<%= element.image %>);
+                background-size: cover;
+                background-repeat: no-repeat;
+            "
+        ></div>
+
+        <div class="card-body" style="max-height: 400px">
+            <h5 class="card-title"><%= element.name %></h5>
+            <p>Price: $<%= element.price %></p>
+            <a href="/bakery/<%= element.slug %>" class="btn btn-primary">
+                View Cake
+            </a>
+        </div>
+    </div>
+</div>
