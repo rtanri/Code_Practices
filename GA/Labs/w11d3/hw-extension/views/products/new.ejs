@@ -1,20 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <%- include('../partials/head') %>
-    </head>
-    <body>
+<%- include('../partials/head') %>
+
       <div class="container d-flex flex-column align-items-center">
-            <h2>Edit Details</h2>
-            <form action="/bakery/<%= cakeIndex %>?_method=PATCH " method="post" class="flex">
+            <h2>Enter New Item</h2>
+            <form action="/products" method="post" class="flex">
                     <div class="flex direction mb-3">
                             <label>Name: </label> 
-                            <input type="text" name="name" placeholder="Banana Cake">
+                            <input type="text" name="name" placeholder="Chocolate Brownise">
                     </div>
 
                     <div class="flex direction mb-3">
                         <label>Price: </label> 
-                        <input type="text" name="price" placeholder="100" >
+                        <input type="text" name="price" placeholder="50" >
                   </div>
                     
                     <div class="flex direction mb-3">
@@ -24,11 +20,10 @@
                   
                     
                     <div class="d-flex flex-row justify-content-center">
-                            <a class="btn btn-secondary smallMargin" href="/bakery/<%= cakeIndex %> ">Back</a>
+                            <a class="btn btn-secondary smallMargin" href="/products">Back</a>
                             <button type="submit" class="smallMargin">Save</button>
                     </div>
             </form>
     </div>
     </div>
-    </body>
-</html>
+<%- include('../partials/footer') %>

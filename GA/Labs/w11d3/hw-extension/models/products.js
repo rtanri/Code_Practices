@@ -1,19 +1,19 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 // create Schema
-const cakeSchema = new mongoose.Schema({
-    slug: { type: String, required: true, unique: true },
-    name: { type: String, required: true },
-    price: { type: Number, required: true },
-    image: { type: String, require: true }
+const productSchema = new mongoose.Schema({
+  slug: { type: String, required: true, unique: true },
+  name: { type: String, required: true },
+  price: { type: Number, required: true },
+  image: { type: String, require: true },
 });
 
 // create Model (e.g. Cake -> cakes) which will become collections in smallcase+plurals
-const CakeModel = mongoose.model('cake', cakeSchema);
+const ProductModel = mongoose.model("Product", productSchema);
 
 // with mongoose, we will catch this data from the database
 module.exports = {
-    CakeModel: CakeModel
+  ProductModel: ProductModel,
 };
 
 /* ============ Before using Mongoose ============== */

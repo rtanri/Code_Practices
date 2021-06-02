@@ -1,0 +1,28 @@
+<%- include('../partials/head') %>
+
+    <h1><%= product.name %></h1>
+    <div class="container d-flex flex-column align-items-center">
+      <img src="<%= product.image %>" class="cakeImage smallMargin" />
+
+      <h4 class="smallMargin">Price: <%= product.price %></h4>
+      <h5 class="smallMargin">Index: <%= product.slug %></h5>
+
+      <div class="button-list d-flex flex-row align-items-start justify-content-evenly">
+        <a href="/products" class="btn btn-secondary mr-3">Back</a>
+        <a
+          href="/products/<%= product.slug %>/edit"
+          class="btn btn-secondary mr-3"
+        >
+          Edit
+        </a>
+        <form
+          method="post"
+          action="/products/<%= product.slug %>?_method=DELETE"
+        >
+          <button type="submit" class="btn btn-danger noMargin">
+            Remove
+          </button>
+        </form>
+      </div>
+    </div>
+<%- include('../partials/footer') %>

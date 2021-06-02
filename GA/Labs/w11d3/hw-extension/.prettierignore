@@ -1,0 +1,3 @@
+views
+/views/partials/head.ejs
+~/views/products/*.ejs

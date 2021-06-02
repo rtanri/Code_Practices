@@ -1,0 +1,25 @@
+<%- include('../partials/head') %>
+
+    <div class="container d-flex flex-column align-items-center">
+      <h1>Biscoff Bakery</h1>
+      <a class="btn btn-secondary new-entry-button mb-3" href="/products/new">
+        New Entry
+      </a>
+      <div class="container d-flex justify-content-center flex-wrap">
+        <!-- prettier-ignore -->
+        <% if (products.length) {%>
+        <!-- prettier-ignore -->
+
+        <% products.forEach(element => { %>
+            <%- include('../partials/displayCard', { element }) %> 
+            <% }) %>
+
+        <% } else {%>
+        <p>No Product Is Available</p>
+
+        <% } %>
+      </div>
+    </div>
+
+<%- include('../partials/footer') %>
+
