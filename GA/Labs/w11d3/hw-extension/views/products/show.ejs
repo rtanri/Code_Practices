@@ -5,15 +5,21 @@
       <img src="<%= product.image %>" class="cakeImage smallMargin" />
 
       <h4 class="smallMargin">Price: <%= product.price %></h4>
-      <h5 class="smallMargin">Index: <%= product.slug %></h5>
+      <!-- <h5 class="smallMargin">Index: <%= product.slug %></h5> -->
 
-      <div class="button-list d-flex flex-row align-items-start justify-content-evenly">
+      <div class="button-list d-flex flex-row align-items-start justify-content-evenly mt-5">
         <a href="/products" class="btn btn-secondary mr-3">Back</a>
         <a
           href="/products/<%= product.slug %>/edit"
-          class="btn btn-secondary mr-3"
+          class="btn btn-primary mr-3"
         >
           Edit
+        </a>
+        <a
+          href="/products/<%= product.slug %>/ratings/new"
+          class="btn btn-primary mr-3"
+        >
+          Rate
         </a>
         <form
           method="post"

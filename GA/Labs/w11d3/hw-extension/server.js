@@ -7,6 +7,7 @@ const app = express();
 const port = 4000;
 const methodOverride = require("method-override");
 const productController = require("./controllers/products_controller");
+const productRatingController = require("./controllers/product_ratings_controller");
 app.set("view engine", "ejs");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -50,6 +51,12 @@ app.get("/products/:slug", productController.show);
 
 //delete
 app.delete("/products/:slug", productController.delete);
+
+// product rating routes
+app.get("/products/:slug/ratings/new", productRatingController.newForm);
+
+// product rating routes
+app.post("/products/:slug/ratings", productRatingController.createForm);
 
 // homepage
 app.get("/", productController.homepage);
