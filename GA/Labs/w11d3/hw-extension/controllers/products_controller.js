@@ -40,7 +40,6 @@ module.exports = {
         return ProductRatingModel.find({ product_id: item._id }).sort({
           created_at: "desc",
         });
-        fie;
       })
 
       // prettier-ignore
