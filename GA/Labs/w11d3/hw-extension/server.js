@@ -9,12 +9,28 @@ const methodOverride = require("method-override");
 const productController = require("./controllers/products_controller");
 const productRatingController = require("./controllers/product_ratings_controller");
 const userController = require("./controllers/user_controller");
+const {
+  authenticatedOnly: authenticatedOnlyMiddleware,
+  guestOnly: guestOnlyMiddleware,
+  setUserVarMiddleware: setUserVarMiddleware,
+} = require("./middlewares/authMiddleware");
+
+const session = require("express-session");
 app.set("view engine", "ejs");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.use(methodOverride("_method"));
-
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    name: "user_session",
+    resave: false,
+    saveUninitialized: false, // need for login session
+    cookie: { path: "/", secure: false, maxAge: 3600000 }, // 3600000ms = 3600s = 60mins, cookie expires in an hour
+  })
+);
+app.use(setUserVarMiddleware);
 // =======================================
 //              DATABASE
 // =======================================
@@ -60,13 +76,19 @@ app.get("/products/:slug/ratings/new", productRatingController.newForm);
 app.post("/products/:slug/ratings", productRatingController.createForm);
 
 // users
-app.get("/users/register", userController.registerForm);
-app.post("/users/register", userController.registerUser);
+app.get("/users/register", guestOnlyMiddleware, userController.registerForm);
+app.post("/users/register", guestOnlyMiddleware, userController.registerUser);
 
-app.get("/users/login", userController.loginForm);
-app.post("/users/login", userController.loginUser);
+app.get("/users/login", guestOnlyMiddleware, userController.loginForm);
+app.post("/users/login", guestOnlyMiddleware, userController.loginUser);
 
-app.get("/users/dashboard", userController.dashboard);
+app.get(
+  "/users/dashboard",
+  authenticatedOnlyMiddleware,
+  userController.dashboard
+);
+
+app.post("/users/logout", authenticatedOnlyMiddleware, userController.logout);
 
 // homepage
 app.get("/", productController.homepage);

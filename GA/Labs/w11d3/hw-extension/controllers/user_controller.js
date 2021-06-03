@@ -4,42 +4,11 @@ const { v4: uuidv4 } = require("uuid");
 const { createHash } = require("crypto");
 
 module.exports = {
-  dashboard: (req, res) => {
-    res.render("users/dashboard");
-  },
-  loginForm: (req, res) => {
-    res.render("users/login");
-  },
-  loginUser: async (req, res) => {
-    //   validate if email or password is empty
-    let user = null;
-    try {
-      user = await UserModel.findOne({ email: req.body.email });
-    } catch (err) {
-      console.log(err);
-      res.redirect("/users/login");
-      return;
-    }
-    if (!user) {
-      res.redirect("/users/register");
-      return;
-    }
-
-    //     try to chech given password is correct
-    const saltedPassword = user.pwsalt + req.body.password;
-    let hashInstance = createHash("sha256");
-    hashInstance.update(saltedPassword);
-    const hashedPassword = hashInstance.digest("hex");
-
-    // compare database pw and created
-    if (hashedPassword !== user.hash) {
-      res.redirect("/users/login");
-    }
-    res.redirect("/users/dashboard");
-  },
   registerForm: (req, res) => {
+    // middleware to check user has login
     res.render("users/register");
   },
+
   registerUser: async (req, res) => {
     // validate first & last name
     if (!req.body.first_name || !req.body.last_name) {
@@ -91,5 +60,45 @@ module.exports = {
     }
 
     res.redirect("/users/dashboard");
+  },
+
+  loginForm: (req, res) => {
+    // middleware if login succesfully
+    res.render("users/login");
+  },
+  loginUser: async (req, res) => {
+    //   validate if email or password is empty
+    let user = null;
+    try {
+      user = await UserModel.findOne({ email: req.body.email });
+    } catch (err) {
+      console.log(err);
+      res.redirect("/users/login");
+      return;
+    }
+    if (!user) {
+      res.redirect("/users/register");
+      return;
+    }
+
+    //     try to chech given password is correct
+    const saltedPassword = user.pwsalt + req.body.password;
+    let hashInstance = createHash("sha256");
+    hashInstance.update(saltedPassword);
+    const hashedPassword = hashInstance.digest("hex");
+
+    // compare database pw and created
+    if (hashedPassword !== user.hash) {
+      res.redirect("/users/login");
+    }
+    req.session.user = user;
+    res.redirect("/users/dashboard");
+  },
+  dashboard: (req, res) => {
+    res.render("users/dashboard");
+  },
+  logout: (req, res) => {
+    req.session.destroy();
+    res.redirect("/products");
   },
 };
