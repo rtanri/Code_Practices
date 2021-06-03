@@ -10,7 +10,37 @@ module.exports = {
   loginForm: (req, res) => {
     res.render("users/login");
   },
-  registerForm: async (req, res) => {
+  loginUser: async (req, res) => {
+    //   validate if email or password is empty
+    let user = null;
+    try {
+      user = await UserModel.findOne({ email: req.body.email });
+    } catch (err) {
+      console.log(err);
+      res.redirect("/users/login");
+      return;
+    }
+    if (!user) {
+      res.redirect("/users/register");
+      return;
+    }
+
+    //     try to chech given password is correct
+    const saltedPassword = user.pwsalt + req.body.password;
+    let hashInstance = createHash("sha256");
+    hashInstance.update(saltedPassword);
+    const hashedPassword = hashInstance.digest("hex");
+
+    // compare database pw and created
+    if (hashedPassword !== user.hash) {
+      res.redirect("/users/login");
+    }
+    res.redirect("/users/dashboard");
+  },
+  registerForm: (req, res) => {
+    res.render("users/register");
+  },
+  registerUser: async (req, res) => {
     // validate first & last name
     if (!req.body.first_name || !req.body.last_name) {
       res.redirect("/users/register");

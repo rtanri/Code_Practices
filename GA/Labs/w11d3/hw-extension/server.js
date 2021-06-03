@@ -4,7 +4,7 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
-const port = 3000;
+const port = 4000;
 const methodOverride = require("method-override");
 const productController = require("./controllers/products_controller");
 const productRatingController = require("./controllers/product_ratings_controller");
@@ -61,8 +61,10 @@ app.post("/products/:slug/ratings", productRatingController.createForm);
 
 // users
 app.get("/users/register", userController.registerForm);
+app.post("/users/register", userController.registerUser);
 
 app.get("/users/login", userController.loginForm);
+app.post("/users/login", userController.loginUser);
 
 app.get("/users/dashboard", userController.dashboard);
 
