@@ -4,7 +4,7 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
-const port = 4000;
+const port = 3000;
 const methodOverride = require("method-override");
 const productController = require("./controllers/products_controller");
 const productRatingController = require("./controllers/product_ratings_controller");
