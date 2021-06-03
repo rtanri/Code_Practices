@@ -1,4 +1,5 @@
 const _ = require("lodash");
+const moment = require("moment");
 const { ProductRatingModel } = require("../models/product_ratings");
 const { ProductModel } = require("../models/products");
 
@@ -24,11 +25,15 @@ module.exports = {
         console.log(1);
         console.log(ratingResp);
 
+        const timestampNow = moment().utc();
+
         // update database
         return ProductRatingModel.create({
           product_id: ratingResp._id,
           rating: req.body.rating,
           comment: req.body.comment,
+          created_at: timestampNow,
+          updated_at: timestampNow,
         });
       })
       .then(createResp => {

@@ -1,5 +1,6 @@
 // const { cakes, Baked } = require('../models/biscuit.js');
 const { ProductModel } = require("../models/products");
+const { ProductRatingModel } = require("../models/product_ratings");
 const _ = require("lodash");
 
 module.exports = {
@@ -21,24 +22,38 @@ module.exports = {
   },
 
   show: (req, res) => {
+    let product = {}; // to make the item is available outside of scope
+
     // find 1 item instead of array with slug searched
-    ProductModel.findOne({ slug: req.params.slug }).then(item => {
-      console.log("success");
-      console.log(item);
-      // if item is not found, redirect home
-      if (!item) {
-        res.redirect("/products");
-      }
-      res
-        .render("products/show", {
-          product: item,
-          // productIndex: req.params.slug,
-        })
-        .catch(err => {
-          console.log(err);
+    ProductModel.findOne({ slug: req.params.slug }) // prettier-ignore
+
+      .then(item => {
+        console.log("success");
+
+        // if item is not found, redirect home
+        if (!item) {
           res.redirect("/products");
+        }
+        product = item;
+
+        // get all product ratings of 1 item from database
+        return ProductRatingModel.find({ product_id: item._id }).sort({
+          created_at: "desc",
         });
-    });
+        fie;
+      })
+
+      // prettier-ignore
+      .then(ratingResp => {
+        res.render("products/show", {
+          product: product,
+          ratings: ratingResp,
+        });
+      })
+      .catch(err => {
+        console.log(err);
+        res.redirect("/products");
+      });
   },
   new: (req, res) => {
     res.render("products/new");

@@ -36,5 +36,9 @@ label {
 }
 
 .button-list {
-  width: 350px;
+  width: 400px;
+}
+
+.rating-list {
+  width: 800px;
 }

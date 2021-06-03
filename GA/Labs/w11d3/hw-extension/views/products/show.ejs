@@ -9,26 +9,35 @@
 
       <div class="button-list d-flex flex-row align-items-start justify-content-evenly mt-5">
         <a href="/products" class="btn btn-secondary mr-3">Back</a>
-        <a
-          href="/products/<%= product.slug %>/edit"
+
+        <a href="/products/<%= product.slug %>/edit"
           class="btn btn-primary mr-3"
-        >
-          Edit
-        </a>
-        <a
-          href="/products/<%= product.slug %>/ratings/new"
+        >Edit</a>
+
+        <a href="/products/<%= product.slug %>/ratings/new" 
           class="btn btn-primary mr-3"
-        >
-          Rate
-        </a>
-        <form
-          method="post"
-          action="/products/<%= product.slug %>?_method=DELETE"
-        >
+        >Rate</a>
+
+        <form method="post" action="/products/<%= product.slug %>?_method=DELETE">
           <button type="submit" class="btn btn-danger noMargin">
             Remove
           </button>
         </form>
       </div>
+
+      <section id="product-rating" class="mt-5 rating-list">
+        <ul class="list-group">
+          <% ratings.forEach(element => { %>
+            <li class="list-group-item">
+              <p>Rating Score: <%= element.rating %></p>
+              <p>Comment: <%= element.comment %></p>
+              <p>Created At: <%= element.created_at %></p>
+              <p>Updated At: <%= element.updated_at %></p>
+            </li>
+          <% }) %>
+
+        </ul>
+       </section> 
+
     </div>
 <%- include('../partials/footer') %>
